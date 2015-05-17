@@ -55,34 +55,73 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+html, body {
+    height: 100%;
+    width: 100%;
+    font-size:10px;
+}
 
-html,body {
-    height:100%;
+#container {
+    max-width: 800px;
+    margin:auto;
+    padding: 0 20px;
 }
 
 header {
     display: block;
-    height: 5vh;
+    padding:16px;
 }
 
 header h1 {
     text-align: center;
     font-size: 1.5em;
+    margin:0;
 }
 
-.column {
+.content {
+}
+
+#rcolumn {
     width: 50%;
     display: block;
     float: left;
-    top: 2em;
 }
 
-.lday {
-    min-height: 25%;
+#lcolumn {
+    width: 50%;
+    display: block;
+    float: left;
 }
 
+#lcolumn > .day {
+    height: 25%;
+}
 
+#rcolumn > .day {
+    height: 33%;
+}
 
+#lcolumn > .day {
+    border-right: 0;
+}
+
+.day {
+    overflow: auto;
+}
+
+.day > h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.day > ul {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.day > ul > li {
+    list-style-type: none;
+}
 
 
 

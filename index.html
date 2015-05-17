@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -16,6 +16,7 @@
         <![endif]-->
     </head>
     <body>
+        <div id='container'>
         <header>
             <h1>This Week</h1>
         </header>
@@ -24,25 +25,45 @@
         <![endif]-->
 
         <div id='content'>
-            <div class='column'>
-                <div class='lday'>
-                    <p>test</p>
+            <div id='lcolumn'>
+                <div id='monday' class='day'>
+                    <h2>Monday</h2>
+                    <ul>
+                        <li>Test</li>
+                        <li>Test</li>
+                        <li>Test</li>
+                        <li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li><li>Test</li>
+                    </ul>
                 </div>
-                <div class='lday'>
-                    <p>test</p>
+                <div id='tuesday' class='day'>
+                    <h2>Tuesday</h2>
                 </div>
-                <div class='lday'>
-                    <p>test</p>
+                <div id='wednesday' class='day'>
+                    <h2>Wednesday</h2>
+                </div>
+                <div id='thursday' class='day'>
+                    <h2>Thursday</h2>
                 </div>
             </div>
-            <div class='column'>
-                
+            <div id='rcolumn'>
+                <div id='friday' class='day'>
+                    <h2>Friday</h2>
+                </div>
+                <div id='saturday' class='day'>
+                    <h2>Saturday</h2>
+                </div>
+                <div id='sunday' class='day'>
+                    <h2>Sunday</h2>
+                </div>
             </div>
+        </div>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script type="text/javascript" src="js/column-height.js"></script>
         <script src="https://apis.google.com/js/client.js?onload=OnLoadCallback"></script>
         <script src="js/main.js"></script>
+
     </body>
 </html>
