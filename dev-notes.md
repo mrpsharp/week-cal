@@ -7,4 +7,5 @@
 * pickadate.js ?
 
 ## Dev Process
+- [X] Set up main structure & layout
 - [ ] Use javascript to get events from this week.
