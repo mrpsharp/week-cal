@@ -21,13 +21,15 @@
           </div>
         <div id='container' style="display:none">
         <header>
-            <h1>This Week</h1>
+            <h1>Weekly Calendar</h1>
+            <a id='nextWeek' class='weekLink' href='#'>Next Week</a>
+            <a id='prevWeek' class='weekLink' href='#'>Previous Week</a>
         </header>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id='content'>
+        <div id='content' class='clearfix'>
             <div id='lcolumn'>
                 <div id='monday' class='day'>
                     <h2>Monday</h2>
@@ -67,8 +69,10 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery/dist/jquery.min.js"><\/script>')</script>
         <script type="text/javascript" src="js/column-height.js"></script>
         <script src="js/main.js"></script>
-        <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
         <script src='js/vendor/moment/min/moment.min.js'></script>
+        <!--<script src='js/vendor/hammerjs/hammer.min.js'></script>-->
+        <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+
 
     </body>
 </html>

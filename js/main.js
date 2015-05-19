@@ -25,7 +25,7 @@ function handleAuthResult(authResult) {
     var containerDiv = document.getElementById('container');
     if (authResult && !authResult.error) {
         authorizeDiv.style.display = 'none';
-        containerDiv.style.display = 'inline';
+        containerDiv.style.display = 'block';
         loadCalendarApi();
     } else {
         // Show auth UI, allowing the user to initiate authorization by
@@ -43,16 +43,35 @@ function handleAuthClick(event) {
 }
 
 function loadCalendarApi() {
-    gapi.client.load('calendar', 'v3', displayEvents);
+    gapi.client.load('calendar', 'v3', getCalendars);
 }
 
-function displayEvents() {
-    var color = '#d06b64';
-    var now = moment();
-    var startOfWeek = now.startOf('isoweek').format();
-    var endOfWeek = now.endOf('isoweek').format();
+function getCalendars(when) {
+    var request = gapi.client.calendar.calendarList.list({
+        'showDeleted' : true
+    })
+    request.execute(function(resp) {
+        calendars = resp.items;
+        for (var i=0;i<calendars.length; i++) {
+            calendar = calendars[i];
+            displayEvents(calendar, when);
+        }
+    })
+}
+
+function displayEvents(calendar, when) {
+    if (when == undefined) {
+        when = moment();
+    }
+    var color = calendar.backgroundColor;
+    var startOfWeek = when.startOf('isoweek').format();
+    var endOfWeek = when.endOf('isoweek').format();
+    // update days
+    for(var i = 0;i<7;i++) {
+      $('.day>h2')[i].innerHTML = when.startOf('isoweek').add(i,'day').format('ddd D MMM');
+    }
     var request = gapi.client.calendar.events.list({
-          'calendarId': 'primary',
+          'calendarId': calendar.id,
           'timeMin': startOfWeek,
           'timeMax' : endOfWeek,
           'showDeleted': false,
@@ -78,14 +97,28 @@ function displayEvents() {
                   var timeStr = '';
                   var style = 'background-color : ' + color;
               } else {
-                  var timeStr = when.format('h') + (when.format('m')>0?when.format('m'):'') + when.format('a');
+                  var timeStr = when.format('h') + (when.format('m')>0?when.format(':m'):'') + when.format('a');
                   var style = 'color : ' + color;
               }
-              var liContent = "<li style='" + style + "'><a href'" + event.htmlLink + "'>" + timeStr + " " + event.summary + "</a></li>";
+              var liContent = "<li style='" + style + "'><a href='" + event.htmlLink + "' target='_blank'>" + timeStr + " " + event.summary + "</a></li>";
               dayDiv.find('ul').append(liContent)
             }
           }
+
         
     })
     
 }
+
+var weekOffset = 0;
+$('#nextWeek').click(function() {
+    weekOffset += 1;
+    $('li').remove();
+    getCalendars(moment().add(weekOffset, 'w'));
+})
+
+$('#prevWeek').click(function() {
+    weekOffset -= 1;
+    $('li').remove();
+    getCalendars(moment().add(weekOffset, 'w'));
+})

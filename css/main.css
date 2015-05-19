@@ -58,7 +58,7 @@ textarea {
 html, body {
     height: 100%;
     width: 100%;
-    font-size:10px;
+    font-size:12px;
 }
 
 #container {
@@ -78,7 +78,18 @@ header h1 {
     margin:0;
 }
 
+header #nextWeek {
+    float:right;
+    width: 20%;
+}
+
+header #prevWeek {
+    float:left;
+    width: 20%;
+}
+
 .content {
+    clear:both;
 }
 
 #rcolumn {
@@ -123,7 +134,14 @@ header h1 {
     list-style-type: none;
 }
 
+a, a:visited {
+    color: inherit;
+    text-decoration: none;
+}
 
+a:hover {
+    text-decoration: underline;
+}
 
 
 
@@ -205,14 +223,6 @@ header h1 {
         text-shadow: none !important;
     }
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
 
     abbr[title]:after {
         content: " (" attr(title) ")";
@@ -252,5 +262,9 @@ header h1 {
     h2,
     h3 {
         page-break-after: avoid;
+    }
+    
+    #container {
+        width: 100%;
     }
 }
