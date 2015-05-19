@@ -1,0 +1,24 @@
+{
+  "name": "week-cal",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mrpsharp/week-cal",
+  "authors": [
+    "Peter Sharp <peter@petersharp.org>"
+  ],
+  "description": "A weekly calendar view for google calendar",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "~3.0.3",
+    "jquery": "~2.1.4"
+  }
+}
