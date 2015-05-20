@@ -92,6 +92,7 @@ header #prevWeek {
     clear:both;
 }
 
+
 #rcolumn {
     width: 50%;
     display: block;
@@ -134,14 +135,7 @@ header #prevWeek {
     list-style-type: none;
 }
 
-a, a:visited {
-    color: inherit;
-    text-decoration: none;
-}
 
-a:hover {
-    text-decoration: underline;
-}
 
 
 
@@ -223,6 +217,14 @@ a:hover {
         text-shadow: none !important;
     }
 
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
 
     abbr[title]:after {
         content: " (" attr(title) ")";
@@ -262,9 +264,5 @@ a:hover {
     h2,
     h3 {
         page-break-after: avoid;
-    }
-    
-    #container {
-        width: 100%;
     }
 }
