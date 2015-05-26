@@ -2,8 +2,9 @@
 A weekly calendar interface to Google Calendar
 
 ## TODO
-- [ ] Swipe to change week
+- [X] Swipe to change week
 - [ ] Week picker
+- [X] Title updates
 
 ## Projects used
 * [google calendar api](https://developers.google.com/google-apps/calendar)

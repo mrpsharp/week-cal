@@ -49,23 +49,32 @@ function loadCalendarApi() {
 function getCalendars(when) {
     var request = gapi.client.calendar.calendarList.list({
         'showDeleted' : true
-    })
+    });
+    if (when == undefined) {
+        when = moment();
+    }
+    updateHeader(when);
     request.execute(function(resp) {
         calendars = resp.items;
         for (var i=0;i<calendars.length; i++) {
             calendar = calendars[i];
             displayEvents(calendar, when);
         }
-    })
+    });
+}
+
+function updateHeader(when) {
+        $('#headerTitle').text(when.startOf('isoweek').format('D MMM') + " - " + when.endOf('isoweek').format('D MMM'));
 }
 
 function displayEvents(calendar, when) {
-    if (when == undefined) {
-        when = moment();
-    }
+    // Find which week we are talking about
+    // Get parameters
     var color = calendar.backgroundColor;
     var startOfWeek = when.startOf('isoweek').format();
     var endOfWeek = when.endOf('isoweek').format();
+
+    
     // update days
     for(var i = 0;i<7;i++) {
       $('.day>h2')[i].innerHTML = when.startOf('isoweek').add(i,'day').format('ddd D MMM');
@@ -111,14 +120,23 @@ function displayEvents(calendar, when) {
 }
 
 var weekOffset = 0;
-$('#nextWeek').click(function() {
+
+function nextWeek() {
     weekOffset += 1;
     $('li').remove();
-    getCalendars(moment().add(weekOffset, 'w'));
-})
+    getCalendars(moment().add(weekOffset, 'w'));    
+}
 
-$('#prevWeek').click(function() {
+function prevWeek() {
     weekOffset -= 1;
     $('li').remove();
     getCalendars(moment().add(weekOffset, 'w'));
-})
+}
+
+// Mappings
+$('#nextWeek').click(nextWeek);
+$('#prevWeek').click(prevWeek);
+
+var mc = new Hammer(document.getElementById('content'));
+mc.on('swipeleft', nextWeek);
+mc.on('swiperight', prevWeek);
