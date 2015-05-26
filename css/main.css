@@ -80,12 +80,10 @@ header h1 {
 
 header #nextWeek {
     float:right;
-    width: 20%;
 }
 
 header #prevWeek {
     float:left;
-    width: 20%;
 }
 
 .content {
